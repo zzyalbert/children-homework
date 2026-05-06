@@ -17,7 +17,6 @@ export default function Home() {
       <main className="mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-2 md:py-28">
         <section className="relative z-10 space-y-6">
           <div className="inline-flex items-center gap-3 rounded-full border border-cyan-300/30 bg-[var(--panel)] px-4 py-2 shadow-[0_0_35px_rgba(34,211,238,0.18)] backdrop-blur-xl">
-            <Image src="/icon-starburst-v2.png" alt="" width={18} height={18} className="floating-star h-[18px] w-[18px]" />
             <p className="text-xs tracking-[0.3em] text-cyan-200">PRIVATE WRITING GALLERY</p>
           </div>
           <h1 className="max-w-xl text-5xl font-black leading-tight text-white md:text-6xl">
@@ -44,13 +43,6 @@ export default function Home() {
             width={192}
             height={192}
             className="floating-book absolute -left-3 bottom-0 opacity-90 drop-shadow-[0_0_55px_rgba(34,211,238,0.35)]"
-          />
-          <Image
-            src="/icon-starburst-v2.png"
-            alt=""
-            width={92}
-            height={92}
-            className="floating-star absolute right-24 top-32 opacity-85 drop-shadow-[0_0_30px_rgba(236,72,153,0.4)]"
           />
           <div className="absolute -left-4 -top-4 h-52 w-52 rounded-full bg-cyan-400/20 blur-3xl" />
           <div className="absolute -bottom-8 right-2 h-48 w-48 rounded-full bg-emerald-400/20 blur-3xl" />
