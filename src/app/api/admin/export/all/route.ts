@@ -17,11 +17,11 @@ export async function GET() {
     zip.file(fileName, buildEssayMarkdown(essay));
   }
 
-  const content = await zip.generateAsync({ type: "uint8array" });
+  const body = await zip.generateAsync({ type: "arraybuffer" });
   const now = new Date().toISOString().slice(0, 10);
   const archiveName = `ethan-zhong-essays-${now}.zip`;
 
-  return new NextResponse(content, {
+  return new NextResponse(body, {
     status: 200,
     headers: {
       "Content-Type": "application/zip",
