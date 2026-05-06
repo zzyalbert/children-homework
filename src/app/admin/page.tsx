@@ -16,6 +16,7 @@ export default async function AdminPage() {
         <header className="flex flex-wrap items-center justify-between gap-3">
           <h1 className="text-3xl font-black text-white">仲城铄展馆管理台</h1>
           <div className="flex gap-2">
+            <Link href="/" className="rounded-lg border border-white/20 px-4 py-2 text-white">首页</Link>
             <Link href="/admin/new" className="rounded-lg bg-cyan-300 px-4 py-2 font-semibold text-zinc-950">新增作品</Link>
             <form action={logoutAction}>
               <button className="rounded-lg border border-white/20 px-4 py-2 text-white">退出</button>
