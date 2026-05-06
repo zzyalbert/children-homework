@@ -17,6 +17,11 @@ export default async function AdminPage() {
           <h1 className="text-3xl font-black text-white">仲城铄展馆管理台</h1>
           <div className="flex gap-2">
             <Link href="/" className="rounded-lg border border-white/20 px-4 py-2 text-white">首页</Link>
+            <form action="/api/admin/export/all" method="get">
+              <button className="rounded-lg border border-emerald-300/40 px-4 py-2 text-emerald-200">
+                全部下载(zip)
+              </button>
+            </form>
             <Link href="/admin/new" className="rounded-lg bg-cyan-300 px-4 py-2 font-semibold text-zinc-950">新增作品</Link>
             <form action={logoutAction}>
               <button className="rounded-lg border border-white/20 px-4 py-2 text-white">退出</button>
@@ -37,6 +42,11 @@ export default async function AdminPage() {
                   <p className="text-xs text-cyan-300">{parseTags(essay.tags).join(" / ")}</p>
                 </div>
                 <div className="flex gap-2">
+                  <form action={`/api/admin/export/${essay.id}`} method="get">
+                    <button className="rounded-md border border-emerald-300/40 px-3 py-1 text-sm text-emerald-300">
+                      下载md
+                    </button>
+                  </form>
                   <Link href={`/admin/edit/${essay.id}`} className="rounded-md border border-cyan-300/40 px-3 py-1 text-sm text-cyan-200">编辑</Link>
                   <form action={deleteEssayAction}>
                     <input type="hidden" name="id" value={essay.id} />
