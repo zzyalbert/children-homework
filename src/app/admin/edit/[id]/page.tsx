@@ -8,7 +8,7 @@ export default async function EditEssayPage({ params }: { params: Promise<{ id: 
   if (!(await isAdminLoggedIn())) redirect("/admin/login");
 
   const { id } = await params;
-  const essay = getEssayById(Number(id));
+  const essay = await getEssayById(Number(id));
   if (!essay) notFound();
 
   return (

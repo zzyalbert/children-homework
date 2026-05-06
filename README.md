@@ -9,10 +9,16 @@
 
 ```bash
 cp .env.example .env.local
-# 修改 ADMIN_PASSWORD
+# 修改 ADMIN_PASSWORD / TURSO_DATABASE_URL / TURSO_AUTH_TOKEN
 npm install
 npm run dev
 ```
+
+## 环境变量
+
+- `ADMIN_PASSWORD`：后台登录密码
+- `TURSO_DATABASE_URL`：Turso 数据库 URL（例如 `libsql://xxx.turso.io`）
+- `TURSO_AUTH_TOKEN`：Turso 访问令牌
 
 ## 主要路由
 

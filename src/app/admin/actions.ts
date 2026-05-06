@@ -30,7 +30,7 @@ function parseInput(formData: FormData) {
 }
 
 export async function createEssayAction(formData: FormData) {
-  createEssay(parseInput(formData));
+  await createEssay(parseInput(formData));
   revalidatePath("/essays");
   revalidatePath("/");
   redirect("/admin");
@@ -38,7 +38,7 @@ export async function createEssayAction(formData: FormData) {
 
 export async function updateEssayAction(formData: FormData) {
   const id = Number(formData.get("id"));
-  updateEssay(id, parseInput(formData));
+  await updateEssay(id, parseInput(formData));
   revalidatePath("/essays");
   revalidatePath(`/essays/${String(formData.get("oldSlug") || "")}`);
   redirect("/admin");
@@ -46,7 +46,7 @@ export async function updateEssayAction(formData: FormData) {
 
 export async function deleteEssayAction(formData: FormData) {
   const id = Number(formData.get("id"));
-  deleteEssay(id);
+  await deleteEssay(id);
   revalidatePath("/essays");
   redirect("/admin");
 }

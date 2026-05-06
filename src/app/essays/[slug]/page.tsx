@@ -5,7 +5,7 @@ import { renderMdx } from "@/lib/mdx";
 
 export default async function EssayDetail({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const essay = getEssayBySlug(slug);
+  const essay = await getEssayBySlug(slug);
   if (!essay || !essay.published) notFound();
 
   const content = await renderMdx(essay.content);

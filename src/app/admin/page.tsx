@@ -8,7 +8,7 @@ import { UploadImageClient } from "@/components/UploadImageClient";
 export default async function AdminPage() {
   if (!(await isAdminLoggedIn())) redirect("/admin/login");
 
-  const essays = getAllEssays();
+  const essays = await getAllEssays();
 
   return (
     <main className="min-h-screen bg-zinc-950 px-6 py-8">

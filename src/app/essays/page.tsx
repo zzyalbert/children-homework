@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { EssayCard } from "@/components/EssayCard";
 import { Nav } from "@/components/Nav";
 import { getPublishedEssays, parseTags } from "@/lib/db";
@@ -9,7 +10,7 @@ export default async function EssaysPage({
   searchParams: Promise<{ tag?: string }>;
 }) {
   const { tag } = await searchParams;
-  const all = getPublishedEssays().map((item) => ({
+  const all = (await getPublishedEssays()).map((item) => ({
     ...item,
     tagsArr: parseTags(item.tags),
   }));
@@ -45,13 +46,13 @@ export default async function EssaysPage({
           />
         </div>
         <div className="flex flex-wrap gap-2">
-          <a href="/essays" className={`rounded-full px-3 py-1 text-sm ${!tag ? "bg-cyan-300 text-zinc-950" : "bg-zinc-800 text-zinc-300"}`}>
+          <Link href="/essays" className={`rounded-full px-3 py-1 text-sm ${!tag ? "bg-cyan-300 text-zinc-950" : "bg-zinc-800 text-zinc-300"}`}>
             全部主题
-          </a>
+          </Link>
           {tags.map((t) => (
-            <a key={t} href={`/essays?tag=${encodeURIComponent(t)}`} className={`rounded-full px-3 py-1 text-sm ${tag === t ? "bg-cyan-300 text-zinc-950" : "bg-zinc-800 text-zinc-300"}`}>
+            <Link key={t} href={`/essays?tag=${encodeURIComponent(t)}`} className={`rounded-full px-3 py-1 text-sm ${tag === t ? "bg-cyan-300 text-zinc-950" : "bg-zinc-800 text-zinc-300"}`}>
               #{t}
-            </a>
+            </Link>
           ))}
         </div>
         {essays.length === 0 ? (
