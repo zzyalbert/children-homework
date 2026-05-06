@@ -62,6 +62,7 @@ export default async function EssaysPage({
             {essays.map((item) => (
               <EssayCard
                 key={item.id}
+                id={item.id}
                 title={item.title}
                 slug={item.slug}
                 summary={item.summary}

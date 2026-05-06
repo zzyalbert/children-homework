@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { deleteEssay, updateEssay, createEssay } from "@/lib/db";
 import { logout } from "@/lib/auth";
-import { toSlug } from "@/lib/slug";
+import { ensureSlug } from "@/lib/slug";
 
 function parseInput(formData: FormData) {
   const title = String(formData.get("title") || "").trim();
@@ -20,7 +20,7 @@ function parseInput(formData: FormData) {
 
   return {
     title,
-    slug: toSlug(manualSlug || title),
+    slug: ensureSlug(manualSlug || title),
     summary,
     content,
     coverImage,

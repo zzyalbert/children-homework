@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 export function EssayCard(props: {
+  id: number;
   title: string;
   slug: string;
   summary: string;
@@ -8,6 +9,8 @@ export function EssayCard(props: {
   coverImage: string | null;
   createdAt: string;
 }) {
+  const href = props.slug ? `/essays/${props.slug}` : `/essays/id/${props.id}`;
+
   return (
     <article className="group overflow-hidden rounded-2xl border border-cyan-400/20 bg-zinc-950/70 shadow-[0_0_40px_rgba(34,211,238,0.12)] transition hover:border-cyan-300/40">
       {props.coverImage ? (
@@ -24,7 +27,7 @@ export function EssayCard(props: {
             </span>
           ))}
         </div>
-        <Link href={`/essays/${props.slug}`} className="inline-block pt-2 text-sm text-cyan-300 hover:text-cyan-200">
+        <Link href={href} className="inline-block pt-2 text-sm text-cyan-300 hover:text-cyan-200">
           阅读全文 →
         </Link>
       </div>
