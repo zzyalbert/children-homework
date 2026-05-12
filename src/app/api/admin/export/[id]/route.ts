@@ -1,7 +1,9 @@
+import JSZip from "jszip";
 import { NextResponse } from "next/server";
 import { isAdminLoggedIn } from "@/lib/auth";
-import { buildEssayMarkdown, toSafeFileBaseName } from "@/lib/export-markdown";
+import { toSafeFileBaseName } from "@/lib/export-markdown";
 import { getEssayById } from "@/lib/db";
+import { buildEssayZip } from "@/lib/export-package";
 
 export async function GET(
   _req: Request,
@@ -17,13 +19,15 @@ export async function GET(
     return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 
-  const markdown = buildEssayMarkdown(essay);
-  const fileName = `${toSafeFileBaseName(essay)}.md`;
+  const zip = new JSZip();
+  await buildEssayZip(zip, essay);
+  const body = await zip.generateAsync({ type: "arraybuffer" });
+  const fileName = `${toSafeFileBaseName(essay)}.zip`;
 
-  return new NextResponse(markdown, {
+  return new NextResponse(body, {
     status: 200,
     headers: {
-      "Content-Type": "text/markdown; charset=utf-8",
+      "Content-Type": "application/zip",
       "Content-Disposition": `attachment; filename="${fileName}"`,
       "Cache-Control": "no-store",
     },

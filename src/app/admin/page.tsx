@@ -44,7 +44,7 @@ export default async function AdminPage() {
                 <div className="flex gap-2">
                   <form action={`/api/admin/export/${essay.id}`} method="get">
                     <button className="rounded-md border border-emerald-300/40 px-3 py-1 text-sm text-emerald-300">
-                      下载md
+                      下载zip
                     </button>
                   </form>
                   <Link href={`/admin/edit/${essay.id}`} className="rounded-md border border-cyan-300/40 px-3 py-1 text-sm text-cyan-200">编辑</Link>

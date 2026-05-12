@@ -2,7 +2,8 @@ import JSZip from "jszip";
 import { NextResponse } from "next/server";
 import { isAdminLoggedIn } from "@/lib/auth";
 import { getAllEssays } from "@/lib/db";
-import { buildEssayMarkdown, toSafeFileBaseName } from "@/lib/export-markdown";
+import { toSafeFileBaseName } from "@/lib/export-markdown";
+import { buildEssayZip } from "@/lib/export-package";
 
 export async function GET() {
   if (!(await isAdminLoggedIn())) {
@@ -13,8 +14,8 @@ export async function GET() {
   const zip = new JSZip();
 
   for (const essay of essays) {
-    const fileName = `${toSafeFileBaseName(essay)}.md`;
-    zip.file(fileName, buildEssayMarkdown(essay));
+    const folder = `${toSafeFileBaseName(essay)}/`;
+    await buildEssayZip(zip, essay, folder);
   }
 
   const body = await zip.generateAsync({ type: "arraybuffer" });
