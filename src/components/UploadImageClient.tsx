@@ -29,7 +29,7 @@ export function UploadImageClient() {
   return (
     <section className="rounded-2xl border border-white/10 bg-zinc-900 p-5">
       <h2 className="mb-2 text-lg font-semibold text-white">展馆图片上传</h2>
-      <p className="mb-3 text-sm text-zinc-400">上传后将文件保存到 `public/uploads`，可直接用于 MDX：`![图](/uploads/文件名)`</p>
+      <p className="mb-3 text-sm text-zinc-400">上传后会保存到 Vercel Blob，并返回可直接用于 MDX 的图片 URL：`![图](https://...blob.vercel-storage.com/xxx.png)`</p>
       <input
         type="file"
         accept="image/*"

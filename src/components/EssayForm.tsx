@@ -50,7 +50,7 @@ export function EssayForm({
           required
           rows={16}
           className="w-full rounded-lg border border-zinc-700 bg-zinc-950 px-3 py-2 font-mono text-sm text-white"
-          placeholder={'# 今天的作品\n\n这是仲城铄的一篇作文。\n\n![配图](/uploads/xxx.png)'}
+          placeholder={'# 今天的作品\n\n这是仲城铄的一篇作文。\n\n![配图](https://xxx.blob.vercel-storage.com/xxx.png)'}
         />
       </div>
       <label className="flex items-center gap-2 text-sm text-zinc-300">
