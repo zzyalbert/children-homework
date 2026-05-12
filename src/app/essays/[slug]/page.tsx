@@ -12,7 +12,7 @@ export default async function EssayDetail({ params }: { params: Promise<{ slug: 
   const tags = parseTags(essay.tags);
 
   return (
-    <div className="min-h-screen bg-zinc-950">
+    <div className="relative z-10 min-h-screen bg-zinc-950">
       <Nav />
       <main className="mx-auto max-w-3xl px-6 py-10">
         <h1 className="text-4xl font-black text-white">{essay.title}</h1>
